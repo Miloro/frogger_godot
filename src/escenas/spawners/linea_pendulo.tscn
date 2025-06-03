@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c545kio1o4nly"]
+
+[ext_resource type="Script" uid="uid://kcyi6xexr64n" path="res://src/scripts/linea_pendulo.gd" id="1_ddadk"]
+
+[node name="linea_pendulo" type="Node2D"]
+script = ExtResource("1_ddadk")
