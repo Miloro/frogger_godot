@@ -2,22 +2,27 @@ extends LineaObstaculo
 
 class_name	LineaPendulo
 
-@export var ancho = 16*4
+@export var ancho = 50
 @export var derecha = true
 
-var obstaculop
+var sierra
+
 
 func _ready() -> void:
 	var obstaculo = escena_obstaculo.instantiate()
 	obstaculo.position = Vector2()
 	obstaculo.area_entered.connect(on_jugador_entra_obstaculo)
-	obstaculop = obstaculo
+	var spriteAnimado = obstaculo.get_node("AnimatedSprite2D")
+	spriteAnimado.play("sierra_anm")
+	sierra = obstaculo
 	add_child(obstaculo)
 
 		
 func _process(delta: float) -> void:
-		var nueva_posicion_x = velocidad * delta + obstaculop.position.x
+		var nueva_posicion_x = velocidad * delta + sierra.position.x
 		if abs(nueva_posicion_x-ancho) < 10 or abs(nueva_posicion_x-ancho) > abs(2*ancho):
 			velocidad = -velocidad
+			sierra.get_node("AnimatedSprite2D").set_flip_h(derecha)
+			derecha = !derecha
 		else :
-			obstaculop.position.x = nueva_posicion_x
+			sierra.position.x = nueva_posicion_x

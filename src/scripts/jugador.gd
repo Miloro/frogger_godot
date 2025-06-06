@@ -12,7 +12,7 @@ signal game_over
 const INCREMENTO_POSICION = 16
 const POSICION_INICIAL_JUGADOR = Vector2(136.0,200)
 
-@export var velocidad =	35
+@export var velocidad =	25
 @export var vidas = 3
 var muerto = false
 
@@ -87,19 +87,25 @@ func mover_jugador(posicion_modificada: Vector2) -> void:
 	
 	nueva_posicion = posicion_clampeada
 
-func muere():
+func muere(por_caida = false):
 	collision_shape_2d.set_deferred("disabled",true)
-	animated_sprite_2d.self_modulate= Color(1,0,0)
 	set_process_input(false)
 	muerto = true
+	if(por_caida):
+		animated_sprite_2d.self_modulate= Color(1,0,0)
 	animated_sprite_2d.play("hit")
 	timer.start()
 	
 	
 func resetar_jugador():
 	collision_shape_2d.set_deferred("disabled",false)
-	animated_sprite_2d.self_modulate= Color(1,1,1)
 	set_process_input(true)
 	global_position = POSICION_INICIAL_JUGADOR
 	nueva_posicion = POSICION_INICIAL_JUGADOR
 	muerto = false
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area is Jugador:
+		print("te caiste")
+		muere(true)

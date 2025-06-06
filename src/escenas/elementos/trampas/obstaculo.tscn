@@ -1,16 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjf1v264cypn3"]
+[gd_scene load_steps=5 format=3 uid="uid://bjf1v264cypn3"]
 
-[ext_resource type="Texture2D" uid="uid://duoycjdkwc5up" path="res://_assets/tileset_map.png" id="1_sxijj"]
+[ext_resource type="Texture2D" uid="uid://bnq2h4ae5kjoh" path="res://assets/tileset2.png" id="1_831w1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arum1"]
+atlas = ExtResource("1_831w1")
+region = Rect2(32, 96, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_831w1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arum1")
+}],
+"loop": true,
+"name": &"flecha",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwt5w"]
-size = Vector2(12, 12)
+size = Vector2(16, 6)
 
 [node name="obstaculo" type="Area2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_sxijj")
-region_enabled = true
-region_rect = Rect2(48, 0, 16, 16)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_831w1")
+animation = &"flecha"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cwt5w")

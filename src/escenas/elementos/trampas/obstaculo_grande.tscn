@@ -1,17 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://0yqpljy4jgge"]
+[gd_scene load_steps=7 format=3 uid="uid://0yqpljy4jgge"]
 
-[ext_resource type="Texture2D" uid="uid://duoycjdkwc5up" path="res://_assets/tileset_map.png" id="1_fds74"]
+[ext_resource type="Texture2D" uid="uid://cpvnkfeffjx44" path="res://assets/piedra.png" id="1_arum1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7a3q6"]
+atlas = ExtResource("1_arum1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pu7lf"]
+atlas = ExtResource("1_arum1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfc2i"]
+atlas = ExtResource("1_arum1")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7a3q6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7a3q6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pu7lf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfc2i")
+}],
+"loop": true,
+"name": &"piedra",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwt5w"]
-size = Vector2(24, 24)
+size = Vector2(25, 23)
 
 [node name="obstaculo" type="Area2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = ExtResource("1_fds74")
-region_enabled = true
-region_rect = Rect2(48, 0, 16, 16)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7a3q6")
+animation = &"piedra"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_cwt5w")

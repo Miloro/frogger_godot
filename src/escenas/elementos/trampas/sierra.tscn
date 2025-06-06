@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://boiixlp2658gy"]
+
+[ext_resource type="Texture2D" uid="uid://bwgnroad0neik" path="res://assets/sierra .png" id="1_b7pts"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7a3q6"]
+atlas = ExtResource("1_b7pts")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pu7lf"]
+atlas = ExtResource("1_b7pts")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfc2i"]
+atlas = ExtResource("1_b7pts")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_la44l"]
+atlas = ExtResource("1_b7pts")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a22lv"]
+atlas = ExtResource("1_b7pts")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npw32"]
+atlas = ExtResource("1_b7pts")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7j7j"]
+atlas = ExtResource("1_b7pts")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t40yw"]
+atlas = ExtResource("1_b7pts")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t8ce4"]
+animations = [{
+"frames": [{
+"duration": 0.05,
+"texture": SubResource("AtlasTexture_7a3q6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pu7lf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfc2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_la44l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a22lv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npw32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7j7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t40yw")
+}],
+"loop": true,
+"name": &"sierra_anm",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c38id"]
+size = Vector2(12, 8)
+
+[node name="Area2D" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_t8ce4")
+animation = &"sierra_anm"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_c38id")

@@ -4,6 +4,7 @@ class_name LineaObstaculo
 
 signal jugador_golpeado
 
+
 @export var obstaculo_tcn = preload("res://src/escenas/elementos/trampas/obstaculo.tscn")
 @export var contador_obstaculos = 3
 @export var distancia_entre_obstaculos = 128
@@ -16,16 +17,18 @@ var obstaculos = []
 
 func _ready() -> void:
 	for i in contador_obstaculos:
-			
+		
 		var obstaculo = escena_obstaculo.instantiate()
 		if spawn_por_la_izquierda:
 			obstaculo.position = Vector2(-limite_movimiento_x + distancia_entre_obstaculos * i, 0)
 		else:
 			obstaculo.position = Vector2(limite_movimiento_x + distancia_entre_obstaculos * i, 0)
+			obstaculo.get_node("AnimatedSprite2D").set_flip_h(true)
 
 		obstaculo.area_entered.connect(on_jugador_entra_obstaculo)
 		add_child(obstaculo)
 		obstaculos.append(obstaculo)
+		obstaculo.get_node("AnimatedSprite2D").play("piedra")
 
 func _process(delta: float) -> void:
 	var dir = 1

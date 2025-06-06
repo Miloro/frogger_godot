@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bj7kqy53tyqlp"]
+[gd_scene load_steps=13 format=3 uid="uid://bj7kqy53tyqlp"]
 
 [ext_resource type="PackedScene" uid="uid://dyvwwj2615ta6" path="res://src/escenas/mapas/mapa.tscn" id="1_bg8j1"]
 [ext_resource type="PackedScene" uid="uid://c5b8lghhwxt5j" path="res://src/escenas/elementos/jugador.tscn" id="2_blyxm"]
@@ -9,11 +9,17 @@
 [ext_resource type="PackedScene" uid="uid://0yqpljy4jgge" path="res://src/escenas/elementos/trampas/obstaculo_grande.tscn" id="4_ug7w8"]
 [ext_resource type="PackedScene" uid="uid://c545kio1o4nly" path="res://src/escenas/spawners/linea_pendulo.tscn" id="5_ug7w8"]
 [ext_resource type="Script" uid="uid://ctl5hd24kxsev" path="res://src/scripts/game_state_manager.gd" id="6_kcqj4"]
+[ext_resource type="PackedScene" uid="uid://boiixlp2658gy" path="res://src/escenas/elementos/trampas/sierra.tscn" id="9_o65dt"]
 [ext_resource type="PackedScene" uid="uid://ct5pes38ymqv2" path="res://src/escenas/hud.tscn" id="10_je4du"]
+[ext_resource type="PackedScene" uid="uid://5qaby8r0c7qo" path="res://src/escenas/caida.tscn" id="12_ahkch"]
 
 [node name="main" type="Node"]
 
 [node name="mapa" parent="." instance=ExtResource("1_bg8j1")]
+
+[node name="jugador" parent="." instance=ExtResource("2_blyxm")]
+position = Vector2(136, 200)
+vidas = 1
 
 [node name="casas_mananger" type="Node" parent="."]
 script = ExtResource("2_ll7ea")
@@ -22,17 +28,13 @@ script = ExtResource("2_ll7ea")
 position = Vector2(8, 8)
 
 [node name="casa2" parent="casas_mananger" instance=ExtResource("2_nxjfm")]
-position = Vector2(56, 8)
-
-[node name="casa3" parent="casas_mananger" instance=ExtResource("2_nxjfm")]
 position = Vector2(104, 8)
 
-[node name="casa4" parent="casas_mananger" instance=ExtResource("2_nxjfm")]
-position = Vector2(168, 8)
+[node name="casa3" parent="casas_mananger" instance=ExtResource("2_nxjfm")]
+position = Vector2(184, 8)
 
-[node name="jugador" parent="." instance=ExtResource("2_blyxm")]
-position = Vector2(136, 200)
-vidas = 5
+[node name="casa4" parent="casas_mananger" instance=ExtResource("2_nxjfm")]
+position = Vector2(280, 8)
 
 [node name="spawner_obstaculos" type="Node" parent="."]
 script = ExtResource("3_xmnem")
@@ -63,10 +65,20 @@ velocidad = 150
 spawn_por_la_izquierda = false
 
 [node name="linea_pendulo" parent="spawner_obstaculos" instance=ExtResource("5_ug7w8")]
-position = Vector2(144, 56)
+position = Vector2(148, 56)
+obstaculo_tcn = ExtResource("9_o65dt")
 velocidad = 100
 
 [node name="HUD" parent="." instance=ExtResource("10_je4du")]
 
 [node name="game_state_manager" type="Node" parent="."]
 script = ExtResource("6_kcqj4")
+
+[node name="caida_izq" parent="." instance=ExtResource("12_ahkch")]
+position = Vector2(46, 50)
+
+[node name="caida_der" parent="." instance=ExtResource("12_ahkch")]
+position = Vector2(242, 48)
+
+[connection signal="area_entered" from="caida_izq" to="jugador" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="caida_der" to="jugador" method="_on_area_2d_area_entered"]

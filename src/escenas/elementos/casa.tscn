@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://db7mefrwflkrv"]
 
 [ext_resource type="Script" uid="uid://0dxctetqlnet" path="res://src/scripts/casa.gd" id="1_833l8"]
-[ext_resource type="Texture2D" uid="uid://duoycjdkwc5up" path="res://_assets/tileset_map.png" id="1_bvqwk"]
+[ext_resource type="Texture2D" uid="uid://bnq2h4ae5kjoh" path="res://assets/tileset2.png" id="2_833l8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_833l8"]
 size = Vector2(10, 9)
@@ -10,15 +10,15 @@ size = Vector2(10, 9)
 script = ExtResource("1_833l8")
 
 [node name="casasprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_bvqwk")
+texture = ExtResource("2_833l8")
 region_enabled = true
-region_rect = Rect2(48, 32, 16, 16)
+region_rect = Rect2(48, 96, 16, 16)
 
 [node name="casaspriteobtenido" type="Sprite2D" parent="."]
 visible = false
-texture = ExtResource("1_bvqwk")
+texture = ExtResource("2_833l8")
 region_enabled = true
-region_rect = Rect2(48, 16, 16, 16)
+region_rect = Rect2(64, 96, 16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.5)
