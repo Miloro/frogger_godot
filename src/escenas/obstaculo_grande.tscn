@@ -27,7 +27,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_jfc2i")
 }],
 "loop": true,
-"name": &"piedra",
+"name": &"obstaculo_animation",
 "speed": 5.0
 }]
 
@@ -38,7 +38,7 @@ size = Vector2(25, 23)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7a3q6")
-animation = &"piedra"
+animation = &"obstaculo_animation"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -0.5)

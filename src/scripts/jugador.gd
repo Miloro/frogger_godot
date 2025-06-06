@@ -104,8 +104,7 @@ func resetar_jugador():
 	nueva_posicion = POSICION_INICIAL_JUGADOR
 	muerto = false
 
-
-func _on_area_2d_area_entered(area: Area2D) -> void:
+func _on_caida_area_entered(area: Area2D) -> void:
 	if area is Jugador:
 		print("te caiste")
 		muere(true)

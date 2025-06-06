@@ -62,7 +62,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_t40yw")
 }],
 "loop": true,
-"name": &"sierra_anm",
+"name": &"obstaculo_animation",
 "speed": 5.0
 }]
 
@@ -73,7 +73,7 @@ size = Vector2(12, 8)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_t8ce4")
-animation = &"sierra_anm"
+animation = &"obstaculo_animation"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)

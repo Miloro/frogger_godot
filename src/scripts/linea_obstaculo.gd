@@ -5,7 +5,7 @@ class_name LineaObstaculo
 signal jugador_golpeado
 
 
-@export var obstaculo_tcn = preload("res://src/escenas/elementos/trampas/obstaculo.tscn")
+@export var obstaculo_tcn = preload("res://src/escenas/obstaculo.tscn")
 @export var contador_obstaculos = 3
 @export var distancia_entre_obstaculos = 128
 @export var velocidad = 200
@@ -28,7 +28,7 @@ func _ready() -> void:
 		obstaculo.area_entered.connect(on_jugador_entra_obstaculo)
 		add_child(obstaculo)
 		obstaculos.append(obstaculo)
-		obstaculo.get_node("AnimatedSprite2D").play("piedra")
+		obstaculo.get_node("AnimatedSprite2D").play("obstaculo_animation")
 
 func _process(delta: float) -> void:
 	var dir = 1

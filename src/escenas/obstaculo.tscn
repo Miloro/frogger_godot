@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bjf1v264cypn3"]
 
-[ext_resource type="Texture2D" uid="uid://bnq2h4ae5kjoh" path="res://assets/tileset2.png" id="1_831w1"]
+[ext_resource type="Texture2D" uid="uid://bnq2h4ae5kjoh" path="res://assets/tileset2.png" id="1_sxijj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_arum1"]
-atlas = ExtResource("1_831w1")
+atlas = ExtResource("1_sxijj")
 region = Rect2(32, 96, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_831w1"]
@@ -13,7 +13,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_arum1")
 }],
 "loop": true,
-"name": &"flecha",
+"name": &"obstaculo_animation",
 "speed": 5.0
 }]
 
@@ -24,7 +24,7 @@ size = Vector2(16, 6)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_831w1")
-animation = &"flecha"
+animation = &"obstaculo_animation"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cwt5w")

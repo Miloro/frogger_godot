@@ -1,15 +1,15 @@
 [gd_scene load_steps=13 format=3 uid="uid://bj7kqy53tyqlp"]
 
-[ext_resource type="PackedScene" uid="uid://dyvwwj2615ta6" path="res://src/escenas/mapas/mapa.tscn" id="1_bg8j1"]
-[ext_resource type="PackedScene" uid="uid://c5b8lghhwxt5j" path="res://src/escenas/elementos/jugador.tscn" id="2_blyxm"]
+[ext_resource type="PackedScene" uid="uid://dyvwwj2615ta6" path="res://src/escenas/mapa.tscn" id="1_bg8j1"]
+[ext_resource type="PackedScene" uid="uid://c5b8lghhwxt5j" path="res://src/escenas/jugador.tscn" id="2_blyxm"]
 [ext_resource type="Script" uid="uid://dngyddx5scxu7" path="res://src/scripts/casas_mananger.gd" id="2_ll7ea"]
-[ext_resource type="PackedScene" uid="uid://db7mefrwflkrv" path="res://src/escenas/elementos/casa.tscn" id="2_nxjfm"]
-[ext_resource type="PackedScene" uid="uid://ds8a0kowhhwr5" path="res://src/escenas/spawners/linea_obstaculo.tscn" id="3_glrbf"]
+[ext_resource type="PackedScene" uid="uid://db7mefrwflkrv" path="res://src/escenas/casa.tscn" id="2_nxjfm"]
+[ext_resource type="PackedScene" uid="uid://ds8a0kowhhwr5" path="res://src/escenas/linea_obstaculo.tscn" id="3_glrbf"]
 [ext_resource type="Script" uid="uid://bjevdoev0521s" path="res://src/escenas/spawner_obstaculos.gd" id="3_xmnem"]
-[ext_resource type="PackedScene" uid="uid://0yqpljy4jgge" path="res://src/escenas/elementos/trampas/obstaculo_grande.tscn" id="4_ug7w8"]
-[ext_resource type="PackedScene" uid="uid://c545kio1o4nly" path="res://src/escenas/spawners/linea_pendulo.tscn" id="5_ug7w8"]
+[ext_resource type="PackedScene" uid="uid://0yqpljy4jgge" path="res://src/escenas/obstaculo_grande.tscn" id="4_ug7w8"]
+[ext_resource type="PackedScene" uid="uid://c545kio1o4nly" path="res://src/escenas/linea_pendulo.tscn" id="5_ug7w8"]
 [ext_resource type="Script" uid="uid://ctl5hd24kxsev" path="res://src/scripts/game_state_manager.gd" id="6_kcqj4"]
-[ext_resource type="PackedScene" uid="uid://boiixlp2658gy" path="res://src/escenas/elementos/trampas/sierra.tscn" id="9_o65dt"]
+[ext_resource type="PackedScene" uid="uid://boiixlp2658gy" path="res://src/escenas/sierra.tscn" id="9_o65dt"]
 [ext_resource type="PackedScene" uid="uid://ct5pes38ymqv2" path="res://src/escenas/hud.tscn" id="10_je4du"]
 [ext_resource type="PackedScene" uid="uid://5qaby8r0c7qo" path="res://src/escenas/caida.tscn" id="12_ahkch"]
 
@@ -41,18 +41,20 @@ script = ExtResource("3_xmnem")
 
 [node name="linea_obstaculo" parent="spawner_obstaculos" instance=ExtResource("3_glrbf")]
 position = Vector2(0, 168)
-contador_obstaculos = 5
+contador_obstaculos = 0
 distancia_entre_obstaculos = 32
 
 [node name="linea_obstaculo2" parent="spawner_obstaculos" instance=ExtResource("3_glrbf")]
 position = Vector2(0, 136)
+contador_obstaculos = 0
 
 [node name="linea_obstaculo3" parent="spawner_obstaculos" instance=ExtResource("3_glrbf")]
 position = Vector2(0, 72)
+contador_obstaculos = 0
 
 [node name="linea_obstaculo4" parent="spawner_obstaculos" instance=ExtResource("3_glrbf")]
 position = Vector2(0, 40)
-contador_obstaculos = 5
+contador_obstaculos = 0
 distancia_entre_obstaculos = 123
 velocidad = 100
 spawn_por_la_izquierda = false
@@ -60,7 +62,7 @@ spawn_por_la_izquierda = false
 [node name="linea_obstaculo5" parent="spawner_obstaculos" instance=ExtResource("3_glrbf")]
 position = Vector2(0, 112)
 obstaculo_tcn = ExtResource("4_ug7w8")
-contador_obstaculos = 1
+contador_obstaculos = 0
 velocidad = 150
 spawn_por_la_izquierda = false
 
@@ -74,11 +76,7 @@ velocidad = 100
 [node name="game_state_manager" type="Node" parent="."]
 script = ExtResource("6_kcqj4")
 
-[node name="caida_izq" parent="." instance=ExtResource("12_ahkch")]
-position = Vector2(46, 50)
+[node name="caida" parent="." instance=ExtResource("12_ahkch")]
+position = Vector2(48, 48)
 
-[node name="caida_der" parent="." instance=ExtResource("12_ahkch")]
-position = Vector2(242, 48)
-
-[connection signal="area_entered" from="caida_izq" to="jugador" method="_on_area_2d_area_entered"]
-[connection signal="area_entered" from="caida_der" to="jugador" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="caida" to="jugador" method="_on_caida_area_entered"]
