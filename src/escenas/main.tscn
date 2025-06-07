@@ -17,10 +17,6 @@
 
 [node name="mapa" parent="." instance=ExtResource("1_bg8j1")]
 
-[node name="jugador" parent="." instance=ExtResource("2_blyxm")]
-position = Vector2(136, 200)
-vidas = 1
-
 [node name="casas_mananger" type="Node" parent="."]
 script = ExtResource("2_ll7ea")
 
@@ -36,25 +32,29 @@ position = Vector2(184, 8)
 [node name="casa4" parent="casas_mananger" instance=ExtResource("2_nxjfm")]
 position = Vector2(280, 8)
 
+[node name="jugador" parent="." instance=ExtResource("2_blyxm")]
+position = Vector2(136, 184)
+vidas = 8
+
 [node name="spawner_obstaculos" type="Node" parent="."]
 script = ExtResource("3_xmnem")
 
 [node name="linea_obstaculo" parent="spawner_obstaculos" instance=ExtResource("3_glrbf")]
 position = Vector2(0, 168)
-contador_obstaculos = 0
 distancia_entre_obstaculos = 32
+velocidad = 250
 
 [node name="linea_obstaculo2" parent="spawner_obstaculos" instance=ExtResource("3_glrbf")]
 position = Vector2(0, 136)
-contador_obstaculos = 0
+contador_obstaculos = 2
 
 [node name="linea_obstaculo3" parent="spawner_obstaculos" instance=ExtResource("3_glrbf")]
 position = Vector2(0, 72)
-contador_obstaculos = 0
+contador_obstaculos = 4
 
 [node name="linea_obstaculo4" parent="spawner_obstaculos" instance=ExtResource("3_glrbf")]
 position = Vector2(0, 40)
-contador_obstaculos = 0
+contador_obstaculos = 2
 distancia_entre_obstaculos = 123
 velocidad = 100
 spawn_por_la_izquierda = false
@@ -62,14 +62,15 @@ spawn_por_la_izquierda = false
 [node name="linea_obstaculo5" parent="spawner_obstaculos" instance=ExtResource("3_glrbf")]
 position = Vector2(0, 112)
 obstaculo_tcn = ExtResource("4_ug7w8")
-contador_obstaculos = 0
-velocidad = 150
-spawn_por_la_izquierda = false
+contador_obstaculos = 1
+velocidad = 250
 
 [node name="linea_pendulo" parent="spawner_obstaculos" instance=ExtResource("5_ug7w8")]
 position = Vector2(148, 56)
 obstaculo_tcn = ExtResource("9_o65dt")
+contador_obstaculos = 1
 velocidad = 100
+spawn_por_la_izquierda = false
 
 [node name="HUD" parent="." instance=ExtResource("10_je4du")]
 

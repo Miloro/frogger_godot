@@ -10,11 +10,12 @@ signal game_over
 @onready var timer: Timer = $Timer
 
 const INCREMENTO_POSICION = 16
-const POSICION_INICIAL_JUGADOR = Vector2(136.0,200)
+const POSICION_INICIAL_JUGADOR = Vector2(136.0,184)
 
 @export var velocidad =	25
 @export var vidas = 3
 var muerto = false
+var estado = "front"
 
 var nueva_posicion: Vector2 = Vector2.ZERO
 
@@ -39,33 +40,47 @@ func _process(delta: float) -> void:
 	
 	position = lerp(position,nueva_posicion,velocidad*delta)
 	
-	if(position.distance_to(nueva_posicion) < 0.1 and !muerto):
+	if position.distance_to(nueva_posicion) < 0.1 and !muerto:
 		position = nueva_posicion
 		nueva_posicion = Vector2.ZERO
-		animated_sprite_2d.play("idle_front")
+		match estado:
+			"front":
+				animated_sprite_2d.play("idle_front")
+			"back":
+				animated_sprite_2d.play("idle_back")
+			"perfil":
+				animated_sprite_2d.play("idle_perfil")
+				
 
 
 
 func _input(event: InputEvent) -> void:
 	if nueva_posicion != Vector2.ZERO:
 		return
-		
+
 	var posicion_modificada
-	
+
 	if event.is_action_pressed("up"):
 		posicion_modificada = position + Vector2.UP * INCREMENTO_POSICION
-		animated_sprite_2d.play("moving")
+		estado = "back"
+		animated_sprite_2d.play("move_back")
 	elif event.is_action_pressed("down"):
 		posicion_modificada = position + Vector2.DOWN * INCREMENTO_POSICION
-		animated_sprite_2d.play("moving")
+		estado = "front"
+		animated_sprite_2d.play("move_front")
 	elif event.is_action_pressed("right"):
 		posicion_modificada = position + Vector2.RIGHT * INCREMENTO_POSICION
 		animated_sprite_2d.set_flip_h(false)
-		animated_sprite_2d.play("moving")
+		estado = "perfil"
+		animated_sprite_2d.play("move_perfil")
 	elif event.is_action_pressed("left"):
 		posicion_modificada = position + Vector2.LEFT * INCREMENTO_POSICION
 		animated_sprite_2d.set_flip_h(true)
-		animated_sprite_2d.play("moving")
+		estado = "perfil"
+		animated_sprite_2d.play("move_perfil")
+
+	if posicion_modificada:
+		mover_jugador(posicion_modificada)
 		
 	if posicion_modificada:
 		mover_jugador(posicion_modificada)
@@ -78,7 +93,7 @@ func mover_jugador(posicion_modificada: Vector2) -> void:
 	var min_x = tile_offset
 	var max_x = viewport_size.x - tile_offset
 	var min_y = tile_offset
-	var max_y = viewport_size.y - tile_offset
+	var max_y = viewport_size.y - tile_offset - 16
 	
 	var posicion_clampeada = Vector2(
 		clamp(posicion_modificada.x, min_x , max_x),
@@ -92,8 +107,9 @@ func muere(por_caida = false):
 	set_process_input(false)
 	muerto = true
 	if(por_caida):
-		animated_sprite_2d.self_modulate= Color(1,0,0)
-	animated_sprite_2d.play("hit")
+		animated_sprite_2d.play("caida")
+	else:
+		animated_sprite_2d.play("hit")
 	timer.start()
 	
 	
@@ -106,5 +122,4 @@ func resetar_jugador():
 
 func _on_caida_area_entered(area: Area2D) -> void:
 	if area is Jugador:
-		print("te caiste")
 		muere(true)

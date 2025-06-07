@@ -17,13 +17,13 @@ region = Rect2(0, 32, 32, 32)
 [sub_resource type="SpriteFrames" id="SpriteFrames_7a3q6"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.4,
 "texture": SubResource("AtlasTexture_7a3q6")
 }, {
-"duration": 1.0,
+"duration": 0.4,
 "texture": SubResource("AtlasTexture_pu7lf")
 }, {
-"duration": 1.0,
+"duration": 0.4,
 "texture": SubResource("AtlasTexture_jfc2i")
 }],
 "loop": true,

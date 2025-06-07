@@ -8,9 +8,9 @@ class_name	Hud
 @onready var resultado: Label = $MarginContainer/CenterContainer/PanelContainer/VBoxContainer/resultado
 
 
-var textura_vida = preload("res://_assets/heart.png")
+var textura_vida = preload("res://assets/sun.png")
 var texturas_vidas: Array[TextureRect] = []
-
+#agregar un multiplicador de vidas cuando supera 4
 func crear_vidas(cantidad_vidas:int):
 	for i in cantidad_vidas:
 		var texture_rect = TextureRect.new()
