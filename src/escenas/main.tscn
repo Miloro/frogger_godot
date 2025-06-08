@@ -51,6 +51,7 @@ contador_obstaculos = 2
 [node name="linea_obstaculo3" parent="spawner_obstaculos" instance=ExtResource("3_glrbf")]
 position = Vector2(0, 72)
 contador_obstaculos = 4
+spawn_por_la_izquierda = false
 
 [node name="linea_obstaculo4" parent="spawner_obstaculos" instance=ExtResource("3_glrbf")]
 position = Vector2(0, 40)

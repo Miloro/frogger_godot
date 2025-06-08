@@ -82,8 +82,7 @@ func _input(event: InputEvent) -> void:
 	if posicion_modificada:
 		mover_jugador(posicion_modificada)
 		
-	if posicion_modificada:
-		mover_jugador(posicion_modificada)
+
 
 	
 func mover_jugador(posicion_modificada: Vector2) -> void:
@@ -92,7 +91,7 @@ func mover_jugador(posicion_modificada: Vector2) -> void:
 	
 	var min_x = tile_offset
 	var max_x = viewport_size.x - tile_offset
-	var min_y = tile_offset
+	var min_y = tile_offset 
 	var max_y = viewport_size.y - tile_offset - 16
 	
 	var posicion_clampeada = Vector2(

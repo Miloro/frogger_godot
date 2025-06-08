@@ -387,9 +387,9 @@ size = Vector2(6, 8)
 script = ExtResource("1_puclx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -1)
 sprite_frames = SubResource("SpriteFrames_1lo8f")
 animation = &"idle_back"
+autoplay = "idle_back"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
