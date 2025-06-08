@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bj7kqy53tyqlp"]
+[gd_scene load_steps=14 format=3 uid="uid://bj7kqy53tyqlp"]
 
 [ext_resource type="PackedScene" uid="uid://dyvwwj2615ta6" path="res://src/escenas/mapa.tscn" id="1_bg8j1"]
 [ext_resource type="PackedScene" uid="uid://c5b8lghhwxt5j" path="res://src/escenas/jugador.tscn" id="2_blyxm"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://boiixlp2658gy" path="res://src/escenas/sierra.tscn" id="9_o65dt"]
 [ext_resource type="PackedScene" uid="uid://ct5pes38ymqv2" path="res://src/escenas/hud.tscn" id="10_je4du"]
 [ext_resource type="PackedScene" uid="uid://5qaby8r0c7qo" path="res://src/escenas/caida.tscn" id="12_ahkch"]
+[ext_resource type="AudioStream" uid="uid://dyo0jx3lnlrg6" path="res://sonido/Midnight Road.wav" id="13_w8yc1"]
 
 [node name="main" type="Node"]
 
@@ -34,7 +35,6 @@ position = Vector2(280, 8)
 
 [node name="jugador" parent="." instance=ExtResource("2_blyxm")]
 position = Vector2(136, 184)
-vidas = 8
 
 [node name="spawner_obstaculos" type="Node" parent="."]
 script = ExtResource("3_xmnem")
@@ -80,5 +80,12 @@ script = ExtResource("6_kcqj4")
 
 [node name="caida" parent="." instance=ExtResource("12_ahkch")]
 position = Vector2(48, 48)
+
+[node name="sound_mananger" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_w8yc1")
+volume_db = -15.637
+autoplay = true
 
 [connection signal="area_entered" from="caida" to="jugador" method="_on_caida_area_entered"]
