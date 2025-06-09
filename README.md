@@ -1,6 +1,6 @@
 # Frogger Godot
 
-Primera entrega para la Diplomatura de desarrolo de videojuegos, es un  **Frogger**, desarrollado con **Godot Engine**.
+Primera entrega para la Diplomatura de desarrolo de videojuegos, **Frogger** desarrollado con **Godot Engine**.
 
 ## Características
 
@@ -11,10 +11,9 @@ Primera entrega para la Diplomatura de desarrolo de videojuegos, es un  **Frogge
 - Nuevo obstáculo con comportamiento de ida y vuelta
 - Música de fondo añadida al juego
 - Ajuste del área jugable para mostrar vidas
-- Uso de capas y tile sets para mejorar el diseño visual
+- Uso de capas con los tile sets para mejorar el diseño visual
 
 ## Autor
-
 - Miguel Miloro
 
 ## Créditos
